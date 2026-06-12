@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>了解更多 - 肖林峰</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== CSS Reset ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --dark-1: #0d0d0d;
+            --dark-2: #1a1a1a;
+            --dark-3: #262626;
+            --dark-4: #333333;
+            --text-primary: #e0e0e0;
+            --text-secondary: #999999;
+            --text-muted: #666666;
+            --border: #2a2a2a;
+            --accent: #aaaaaa;
+            --radius: 12px;
+            --transition: 0.3s ease;
+            --font-cn: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-en: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--dark-4) var(--black);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: var(--dark-4); border-radius: 3px; }
+
+        body {
+            font-family: var(--font-cn);
+            background: var(--black);
+            color: var(--text-primary);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== Navigation ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: var(--font-en);
+            letter-spacing: 2px;
+        }
+
+        .nav-back {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-back:hover {
+            color: var(--text-primary);
+        }
+
+        /* ========== Sections ========== */
+        section {
+            padding: 80px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--font-en);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        .section-line {
+            width: 40px;
+            height: 2px;
+            background: var(--dark-4);
+            margin: 16px auto 0;
+        }
+
+        /* ========== Hero ========== */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 100px;
+            background: linear-gradient(to bottom, var(--dark-1) 0%, var(--black) 100%);
+        }
+
+        .hero-inner {
+            max-width: 700px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 4px 16px;
+            border: 1px solid var(--dark-4);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+        }
+
+        .hero-inner h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-inner h1 span {
+            color: var(--accent);
+        }
+
+        .hero-inner p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border: 1px solid var(--dark-4);
+            border-radius: 100px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .hero-back-link:hover {
+            background: var(--dark-2);
+            border-color: var(--dark-4);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* ========== Interest Cards ========== */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .interest-card {
+            padding: 36px 28px;
+            background: var(--dark-1);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .interest-card:hover {
+            background: var(--dark-2);
+            border-color: var(--dark-4);
+            transform: translateY(-4px);
+        }
+
+        .interest-icon {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+        }
+
+        .interest-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .interest-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* ========== Quote ========== */
+        .quote-section {
+            background: var(--dark-1);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quote-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-mark {
+            font-size: 4rem;
+            color: var(--dark-4);
+            font-family: Georgia, serif;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .quote-text {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== Timeline ========== */
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-row {
+            display: flex;
+            gap: 28px;
+            padding: 24px;
+            background: var(--dark-1);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .timeline-row:hover {
+            background: var(--dark-2);
+            border-color: var(--dark-4);
+            transform: translateX(6px);
+        }
+
+        .timeline-year {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-family: var(--font-en);
+            font-weight: 500;
+            flex-shrink: 0;
+            min-width: 100px;
+            padding-top: 2px;
+        }
+
+        .timeline-body h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .timeline-body p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ========== Gallery ========== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--dark-1);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .gallery-item:hover {
+            background: var(--dark-2);
+            border-color: var(--dark-4);
+            transform: translateY(-3px);
+        }
+
+        .gallery-emoji {
+            font-size: 2.4rem;
+        }
+
+        .gallery-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== Footer ========== */
+        .footer {
+            text-align: center;
+            padding: 32px 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            background: var(--black);
+        }
+
+        .footer span {
+            color: var(--accent);
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 768px) {
+            .nav { padding: 14px 20px; }
+            section { padding: 50px 20px; }
+            .hero { padding-top: 80px; min-height: 50vh; }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-inner h1 { font-size: 1.8rem; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">LINFENG.</div>
+        <a href="index.html" class="nav-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            返回主页
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-tag">MORE ABOUT ME</div>
+            <h1>你好，我是<br><span>肖林峰</span></h1>
+            <p>一个热爱生活、喜欢探索世界的普通人。这里记录了我的日常爱好与生活态度。</p>
+            <a href="index.html" class="hero-back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                返回主页
+            </a>
+        </div>
+    </section>
+
+    <!-- Section 1: 兴趣爱好 -->
+    <section id="interests">
+        <div class="section-header">
+            <div class="section-number">01</div>
+            <h2 class="section-title">兴趣爱好</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <div class="interest-icon">🎮</div>
+                <h3>游戏世界</h3>
+                <p>喜欢沉浸在游戏的世界里，从《永劫无间》的武侠博弈到《我的世界》的无限创造，游戏让我体验不同的人生。</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">🎵</div>
+                <h3>音乐陪伴</h3>
+                <p>音乐是生活中不可或缺的调味剂。从流行到古典，从民谣到电子，旋律总能恰到好处地呼应每一种心情。</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">📖</div>
+                <h3>阅读时光</h3>
+                <p>在文字中游历四方，在阅读里体味百态。无论是小说、散文还是技术书籍，都能让我沉浸其中。</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">🚶</div>
+                <h3>散步旅行</h3>
+                <p>喜欢用脚步丈量城市，在行走中发现生活的美好。每一次旅行都是一次全新的探索，每一段路程都有不同的风景。</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">🎬</div>
+                <h3>动漫世界</h3>
+                <p>从《海贼王》的热血冒险到《进击的巨人》的人性思辨，动漫为我打开了无数个平行宇宙的大门。</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">💻</div>
+                <h3>编程创造</h3>
+                <p>享受用代码构建事物的成就感。从一行行代码到完整的应用，创造的乐趣是驱动我前进的动力。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: 格言 -->
+    <div class="quote-section">
+        <section>
+            <div class="quote-inner">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">
+                    风月都好看，人间也浪漫。<br>
+                    世界很大，走得越多，越觉得自己的渺小与幸运。
+                </p>
+                <p class="quote-author">—— 肖林峰</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Section 3: 成长轨迹 -->
+    <section id="journey">
+        <div class="section-header">
+            <div class="section-number">02</div>
+            <h2 class="section-title">成长轨迹</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="timeline-list">
+            <div class="timeline-row">
+                <div class="timeline-year">2023 — 今</div>
+                <div class="timeline-body">
+                    <h4>昆明学院 · 大数据专业</h4>
+                    <p>在大学里接触更广阔的知识世界，学习数据结构、算法、网络等核心课程，同时培养自己的兴趣爱好。</p>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <div class="timeline-year">2020 — 2023</div>
+                <div class="timeline-body">
+                    <h4>高中时光</h4>
+                    <p>一段平凡却珍贵的青春岁月，和同学们一起度过了无数难忘的日夜。</p>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <div class="timeline-year">更早</div>
+                <div class="timeline-body">
+                    <h4>成长之初</h4>
+                    <p>从好奇心出发，一步步探索这个世界，逐渐找到了自己热爱的事物和方向。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: 喜欢的事物 -->
+    <section id="favorites">
+        <div class="section-header">
+            <div class="section-number">03</div>
+            <h2 class="section-title">喜欢的事物</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <span class="gallery-emoji">☕</span>
+                <span class="gallery-label">咖啡</span>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-emoji">🌙</span>
+                <span class="gallery-label">夜晚</span>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-emoji">🎧</span>
+                <span class="gallery-label">耳机</span>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-emoji">📚</span>
+                <span class="gallery-label">阅读</span>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-emoji">🌧️</span>
+                <span class="gallery-label">雨天</span>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-emoji">🐱</span>
+                <span class="gallery-label">猫咪</span>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-emoji">🍜</span>
+                <span class="gallery-label">美食</span>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-emoji">✨</span>
+                <span class="gallery-label">星空</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 <span>肖林峰 033</span> · 用 ❤️ 构建</p>
+    </footer>
+</body>
+</html>

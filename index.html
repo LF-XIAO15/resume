@@ -253,6 +253,50 @@
             50% { opacity: 0; }
         }
 
+        /* ========== Subpage Entry ========== */
+        .subpage-entry {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .btn-subpage {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid var(--accent-3);
+            color: var(--accent-3);
+            background: rgba(253, 121, 168, 0.08);
+            transition: var(--transition);
+            font-family: var(--font-cn);
+        }
+
+        .btn-subpage:hover {
+            background: rgba(253, 121, 168, 0.18);
+            border-color: var(--accent-3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(253, 121, 168, 0.25);
+        }
+
+        .subpage-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            animation: hintBounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes hintBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.6; }
+            50% { transform: translateY(-4px); opacity: 1; }
+        }
+
         .hero-cta {
             display: flex;
             gap: 16px;
@@ -933,6 +977,14 @@
             <div class="hero-badge">
                 <span class="dot"></span> 欢迎来到我的个人空间
             </div>
+            <!-- 子网页跳转入口 -->
+            <div class="subpage-entry">
+                <a href="detail.html" class="btn-subpage">
+                    了解更多关于我
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                </a>
+                <span class="subpage-hint">👆 点击跳转</span>
+            </div>
             <h1 class="hero-name">
                 你好，我是<br>
                 <span class="gradient-text">肖林峰</span>
@@ -1013,7 +1065,7 @@
         <div class="timeline">
             <div class="timeline-item reveal">
                 <div class="timeline-date">2023.09 - 至今</div>
-                <div class="timeline-title">哈哈大学</div>
+                <div class="timeline-title">昆明学院</div>
                 <div class="timeline-subtitle">大数据专业 · 本科</div>
                 <div class="timeline-desc">
                     主修课程：数据结构与算法、计算机网络、操作系统、数据库原理、软件工程等。
@@ -1021,7 +1073,7 @@
             </div>
             <div class="timeline-item reveal reveal-delay-1">
                 <div class="timeline-date">2020.09 - 2023.06</div>
-                <div class="timeline-title">一中</div>
+                <div class="timeline-title">镇一中</div>
                 <div class="timeline-subtitle">高中</div>
                 <div class="timeline-desc">
                     在校期间平凡度过，喜欢和同学玩耍
@@ -1240,7 +1292,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 肖林峰 · 用 ❤️ 和代码构建 · Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+        <p>© 2026 肖林峰 033 · 用 ❤️ 和代码构建 · Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
     </footer>
 
     <script>
